@@ -1,10 +1,9 @@
 'use strict';
 
 const mget = require('..');
+const { getProgress } = mget.tool;
 const assert = require('assert');
-const util = require('util');
 const path = require('path');
-const { sprintf } = require('sprintf-js');
 const md5File = require('md5-file');
 
 const samples = {
@@ -20,20 +19,13 @@ const samples = {
 
 const sampleUrl4 = 'http://ipv4.download.thinkbroadband.com/5MB.zip' // 5 MiB
 
-function printProgress(chunks) {
-    const prog = chunks.map((chunk) => {
-        return sprintf('%3d%%', Math.floor(chunk.downloaded*100 / chunk.size));
-    });
-    process.stdout.write(util.format('Progress: %s\r', prog.join(' ')));
-}
-
 describe('Integration tests', function () {
     describe('download', function () {
         it('5MB concurrency=1', function () {
             this.timeout(0);
             const output = path.join(__dirname, './output');
             const m = mget.create({concurrency: 1});
-            m.on('progress', printProgress);
+            m.on('progress', getProgress);
 
             return m.start(samples.File5MB.url, output)
             .then((res) => {
@@ -45,7 +37,7 @@ describe('Integration tests', function () {
             this.timeout(0);
             const output = path.join(__dirname, './output');
             const m = mget.create({concurrency: 4});
-            m.on('progress', printProgress);
+            m.on('progress', getProgress);
 
             return m.start(samples.File5MB.url, output)
             .then((res) => {
@@ -57,7 +49,7 @@ describe('Integration tests', function () {
             this.timeout(0);
             const output = path.join(__dirname, './output');
             const m = mget.create({concurrency: 8});
-            m.on('progress', printProgress);
+            m.on('progress', getProgress);
 
             return m.start(samples.File5MB.url, output)
             .then((res) => {
