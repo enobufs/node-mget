@@ -1,0 +1,25 @@
+{
+  "name": "mget",
+  "version": "0.0.1",
+  "description": "Parallel downloader powered by curl.",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha"
+  },
+  "keywords": [
+    "curl",
+    "downlaod",
+    "parallel"
+  ],
+  "author": "enobufs",
+  "license": "MIT",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "md5-file": "^3.2.3",
+    "mocha": "^5.0.5",
+    "sprintf-js": "^1.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}
