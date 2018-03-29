@@ -35,6 +35,39 @@ npm install -g mget
 mget -c 4 http://ipv4.download.thinkbroadband.com/5MB.zip
 ```
 
+### Results
+Here's an example results of the performance increase.
+
+Concurrency: 1
+```
+$ time mget -c 1 http://ipv4.download.thinkbroadband.com/5MB.zip
+Progress: 100%
+
+real	0m10.607s
+user	0m0.242s
+sys	0m0.122s
+```
+
+Concurrency: 4
+```
+$ time mget -c 4 http://ipv4.download.thinkbroadband.com/5MB.zip
+Progress: 100% 100% 100% 100%
+
+real	0m6.848s
+user	0m0.272s
+sys	0m0.140s
+```
+
+Concurrency: 8
+```
+$ time mget -c 8 http://ipv4.download.thinkbroadband.com/5MB.zip
+Progress: 100% 100% 100% 100% 100% 100% 100% 100%
+
+real	0m5.668s
+user	0m0.309s
+sys	0m0.170s
+```
+
 
 ## API
 You can use this module inside your application.
