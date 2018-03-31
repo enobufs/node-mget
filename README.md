@@ -1,4 +1,4 @@
-# node-mget
+# mget
 
 A parallel downloader using curl. It splits a large file into multiple of segments and download
 them concurrently using HTTP Range header (multiple "get"). This likely increase download speed
@@ -79,5 +79,4 @@ Please see ./bin/cli.js for your reference.
 ## To do
 * Add retries logic.
 * API reference.
-* Add more tests.
 
