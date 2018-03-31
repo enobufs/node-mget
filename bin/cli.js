@@ -16,6 +16,7 @@ function resolve(ipath) {
  
 program
     .usage('[options] <url>')
+    .version(version, '-v, --version')
     .option('-c, --concurrency <num>', 'Concurrency. (default: 0 - auto)', parseInt)
     .option('-o, --output <pathname>', 'Output file path.)', resolve)
     .parse(process.argv);
